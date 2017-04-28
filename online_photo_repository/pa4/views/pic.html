@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if not edit%}
+        <div class="page-wrap">
+            <div class="page-wrapper">
+                <div class="primary-content marRight30">
+                    <div class="mid-panel">
+                        <div class="back_link">
+                            <a href="{{ url_for('album.album') }}{{ album_id }}">Back to album</a>
+                        </div>
+                        <div class="border"></div>
+                        <div class="back_link">
+                            <div class="back_link_left"><a href="{{ url_for('pic.picture') }}{{ pictures[preIndex][3] }}/{{ album_id }}">Previous</a></div>
+                            <div class="back_link_middle_title_pic"><h2><b class="marRight20">Caption: </b><input id="caption" /></h2></div>
+                            <div class="edit_album_right"><a href="{{ url_for('pic.picture') }}{{ pictures[nextIndex][3] }}/{{ album_id }}">Next</a></div>
+                        </div>
+                        <div class="mid-picture"><img src="{{url_for('static', filename=pictures[currentIndex][5])}}" width="600px" heigth="600px">
+                        {% if session['login'] %}
+                            <!--<form id="favoriteButton" action = "{{url_for('pic.pic_favorites_post')}}" method="post">-->
+                                <!--<input type="hidden" name="username" value={{ session['username'] }} />-->
+                                <button id="favoriteButton">Like</button>
+                            <!--</form>-->
+                        {% endif %}
+                            <p>Total ( <span id = "favoriteNumber"></span> ) favorites,<br/>
+                               Most recently favorited by username ( <span id="favoriteUsername"></span> )</p>
+                            <p hidden id = "username">{{ session['username'] }}</p>
+                        </div>
+
+                        <div class="border"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% block extrascripts %}
+            <script type="text/javascript">
+                initCaption("{{ pictures[currentIndex][1] }}");  // assuming picid is passed to pic.html from your controller
+                initFavorite("{{ pictures[currentIndex][1] }}");
+            </script>
+        {% endblock %}
+    {% endif %}
+
+{#    <h1>{{pageTitle}}</h1>#}
+{#    <div><a href="album?albumid={{albumId}}">Back to all album</a></div>#}
+
+{% endblock %}

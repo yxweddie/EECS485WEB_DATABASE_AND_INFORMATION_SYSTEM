@@ -1,0 +1,7 @@
+.idea/*
+venv
+pa3/static/pictures
+.DS_Store
+*.pyc
+*.log
+*.zip

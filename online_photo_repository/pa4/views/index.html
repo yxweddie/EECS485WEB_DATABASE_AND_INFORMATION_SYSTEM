@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+{% if not is_login %}
+<div class="page-wrap">
+    <div class="panel-wrapper">
+        <!--<div class="right-top">
+            <a href="user/login?returnUrl=main.index">Sign in</a>
+            <a href="">Sign up</a>
+        </div>-->
+        <div class="primary-content textCenter">
+            <div class="title">
+                <span class="welcomeMsg">WELCOME</span>
+                <div class = "welcomeColor">
+                    <p class = "welcome_content"> This is an online photo gallery website</p>
+                    <p class = "welcome_content"> You can view the public albums of our all exiting users </p><br/>
+                    <p class = "welcome_content"> Please sign in if you have already registered</p>
+                    <p class = "welcome_content"> You can also view/edit your own album </p><br/>
+                    <p class = "welcome_content"> Fell free to let more people know us and create account through sign up page</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% else %}
+
+
+<div class="page-wrap">
+    <div class="page-wrapper">
+        <div class="primary-content marRight30">
+            <div class="mid-panel">
+                <div class="panel">
+                    <div class="title marginTop">
+                        <h1>Logged in as {{username}}!</h1>
+
+                        <h2>These are your accessible albums</h2>
+                    </div>
+
+                    <div class="border"></div>
+
+                    <div class="title padTop">
+                        <h3>Your Albums:</h3>
+                    </div>
+                    {%for album in own_albums %}
+                    <div class="content marginTop"><img src="{{ url_for('static', filename='img/umich.jpg') }}"
+                                                        width="200" height="200" class="marRight30"/>
+
+                        <h2><a href="{{ url_for('album.album') }}{{album[0]}}">{{album[1]}}</a></h2>
+
+                        <p>This contains all the pictures in {{album[1]}} </p>
+                    </div>
+                    <div class="clearing"></div>
+
+                    {% endfor %}
+                    <div class="border"></div>
+                    <div class="title padTop">
+                        <h3>Your Accessible Albums:</h3>
+                    </div>
+                    {% for username in other_albums.keys() %}
+
+                        <h4 class="padTop">Owner: {{ username }}</h4>
+
+                        {% for alb in other_albums[username] %}
+                        <div class="content marginTop"><img
+                                src="{{ url_for('static', filename='img/umich.jpg') }}"
+                                width="200" height="200" class="marRight30"/>
+
+                            <h2><a href="{{ url_for('album.album') }}{{alb[0]}}">{{alb[1]}}</a></h2>
+
+                            <p>This contains all the pictures in {{alb[1]}} </p>
+                        </div>
+                        <div class="clearing"></div>
+
+                        {% endfor %}
+                        <div class="border"></div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

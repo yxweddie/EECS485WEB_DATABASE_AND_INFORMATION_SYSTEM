@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if not edit %}
+        <div class="page-wrap">
+            <div class="panel-wrapper">
+                <div class="primary-content marRight30">
+                    <div class="mid-panel">
+                        <div class="back_link">
+                            <a href="{{ url_for('albums.albums') }}" class="back_link_left">Back to albums</a>
+                            <div class="back_link_middle_title"><h2>{{ album[1] }}</h2></div>
+                            <div class="back_link_middle_author"><h4><i>by {{ user }}</i></h4></div>
+                            {% if check_user == 'full' %}
+                                <a href="{{ url_for('album.edit_album') }}{{ album[0] }}" class="edit_album_right">Edit your album</a>
+                            {% endif %}
+                        </div>
+                        <div class="border"></div>
+                        {% for pic in pictures %}
+                            <div class="micro-pic-panel marRight20">
+                                <img src="{{ url_for('static', filename=pic[5]) }}" class="micro-picture"/>
+
+                                <div class="border"></div>
+                                <div class="title">
+                                    <a href="{{ url_for('pic.picture') }}{{ pic[3] }}/{{ album[0] }}">
+                                        {% if pic[2] %}
+                                            {{ pic[2] }}
+                                        {% else %}
+                                            link
+                                        {% endif %}
+                                    </a>
+
+                                    <p class="date">{{ pic[7] }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if edit %}
+        <div class="page-wrap">
+            <div class="page-wrapper">
+                <div class="primary-content">
+                    <div class="mid-panel">
+                        <div class="panel">
+                            <div class="title">
+                                <a href="{{url_for('album.album')}}{{ album[0] }}">Back to album</a>
+                            </div>
+                            <div class="content marginTop">
+                                <div>
+                                    <div>
+                                        <h2>Album Name :
+                                            <label><input id="album_name" type="text" value="{{ album[1] }}"></label>
+                                        </h2>
+                                    </div>
+                                    <div>
+                                        <h2>Status :
+                                            <label>
+                                                <select id="album_status">
+                                                    <option value="val1">{{ album[-1] }}</option>
+                                                    {% if album[-1] == 'private' %}
+                                                        <option value="val2">public</option>
+                                                    {% else %}
+                                                        <option value="val2">private</option>
+                                                    {% endif %}
+                                                </select>
+                                            </label>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <input type="submit" value="Modify Album" class="marginTop10"
+                                       onclick="modify_album_info('{{ url_prefix }}', {{ album[0] }})">
+
+                                <div class="border"></div>
+                                <table class="marginTop10">
+                                    <tr>
+                                        <td class="td-width120">Sequence</td>
+                                        <td class="td-width200">User Name</td>
+                                        <td class="td-width80">Privilege</td>
+                                    </tr>
+                                    {% for a_user in access_user %}
+                                        <tr>
+                                            <td class="td-width120">{{ access_user.index(a_user) + 1 }}</td>
+                                            <td class="td-width200">{{ a_user[1] }}</td>
+                                            <td class="td-width80"><a href="javascript:void(0)"
+                                                                      onclick="remove_user_privilege('{{ url_prefix }}', {{ album[0] }}, '{{ a_user[1] }}')">Revoke</a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    <tr class="height20"></tr>
+                                    <tr>
+                                        <td class="td-width120">Give access to</td>
+                                        <td class="td-width200">
+                                            <select id="new_username">
+                                                {% for u in users %}
+                                                    <option value="{{ u }}">{{ u }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td class="td-width80"><a href="javascript:void(0)"
+                                                                  onclick="add_user_privilege('{{ url_prefix }}', {{ album[0] }})">add</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="border"></div>
+                                <div>
+                                    <label>
+
+
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="border"></div>
+                            <div class="content marginTop">
+                                <table>
+                                    <tr>
+                                        <td class="td-width200">PictureName</td>
+                                        <td class="td-width40">Action</td>
+                                    </tr>
+                                    {% for pic in pictures %}
+                                        <tr>
+                                            <td><a href="{{ url_for('pic.picture') }}{{ pic[3] }}/{{ album[0] }}">{{ pic[2] }}</a></td>
+                                            <td>
+                                                <form id="{{ pic[1] }}" method="POST"
+                                                      action="{{ url_for('album.edit_album') }}{{ album[0] }}"
+                                                      ENCTYPE="multipart/form-data">
+                                                    <input type="hidden" name="op" value="delete">
+                                                    <input type="hidden" name="picid" value="{{ pic[1] }}">
+                                                    <input type="hidden" name="albumid" value="{{ album[0] }}">
+                                                    <input type="hidden" name="username" value="{{ user }}">
+                                                    <a HREF="javascript:document.getElementById('{{ pic[1] }}').submit()">Delete</a>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                            <div class="marginTop">
+                                <form id="addPic" method="POST" action="{{ url_for('album.edit_album') }}{{ album[0] }}"
+                                      ENCTYPE="multipart/form-data">
+                                    <input type="file" name="picName" placeholder="New Pic Name">
+                                    <input type="text" name="caption" placeholder="caption">
+                                    <input type="hidden" name="op" value="add">
+                                    <input type="hidden" name="username" value="{{ user }}">
+                                    <input type="hidden" name="albumid" value="{{ album[0] }}">
+                                    <a HREF="javascript:document.getElementById('addPic').submit()">Add</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

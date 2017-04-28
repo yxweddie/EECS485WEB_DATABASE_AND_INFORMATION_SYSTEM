@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}/>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/user.css') }}/>
+    <script type="text/javascript" src={{url_for('static', filename="js/jquery-2.1.4.min.js" )}}></script>
+    <script type="text/javascript" src={{url_for('static', filename="js/album.js" )}}></script>
+    <script type="text/javascript" src={{url_for('static', filename="js/qwest.min.js" )}}></script>
+    <script type="text/javascript" src={{url_for('static', filename="js/caption.js" )}}></script>
+    <script type="text/javascript" src={{url_for('static', filename="js/favorites.js" )}}></script>
+    <title>Photo Theme</title>
+</head>
+<body>
+{%
+set path= request.path.split('/')[3]
+%}
+<div class="header">
+
+    <div class="header-panel">
+        {% if not session['login'] %}
+        <div class="right-top">
+            <a href="{{url_for('user.login')}}?return_url={{request.path}}">Sign in</a>
+            <a class="marLeft20"href="{{url_for('user.user')}}?return_url={{request.path}}">Sign up</a>
+        </div>
+
+        <div class="menu">
+            <ul class="simple-menu">
+                <li class="marLeft20">
+                    <a
+                            {% if path=='' %}
+                            class="active"
+                            {% endif %}
+                            href="{{ url_for('main.index') }}">home</a>
+                </li>
+                <li class="marLeft20">
+                    <a
+                            {% if path.startswith('album') %}
+                    class = "active"
+                    {% endif %}
+                    href="{{url_for('albums.albums')}}">Albums</a>
+                </li>
+                 <li class="marLeft20"><a
+                        href="{{url_for('search.query_photos')}}">Search</a></li>
+                <li class="marLeft20"
+                        ><a href="https://github.com/EECS485-Fall2015/pa2_v4y9q6ko6r/blob/master/README.md">About</a>
+                </li>
+            </ul>
+        </div>
+        {% else %}
+        <div class="right-top">
+            <label>
+                <p class="font-size20">Welcome:<b class="marLeft20">{{session['username']}}</b></p><br/>
+            </label>
+            <a href="{{url_for('user.logout')}}" class="flrRight">Sign out</a>
+        </div>
+
+        <div class="menu">
+            <ul class="simple-menu">
+                <li class="marLeft20"><a
+                        {% if path=='' %}
+                        class="active"
+                        {% endif %}
+                        href="{{ url_for('main.index') }}">Home</a></li>
+                <li class="marLeft20"><a
+                        {% if path.startswith('album') %}
+                    class="active"
+                    {% endif %}
+                    href="{{url_for('albums.albums')}}">MyAlbums</a></li>
+                <li class="marLeft20"><a
+                        {% if path=="user" %}
+                        class="active"
+                        {% endif %}
+                        href="{{url_for('user.user_edit')}}">Edit Account</a></li>
+                <li class="marLeft20"><a
+                        href="{{url_for('search.query_photos')}}">Search</a></li>
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+<!--- header div end -->
+{% block content %} {% endblock %}
+
+
+<div class="footer">
+    <p>Copyright (c) Group 126 Team. (Rui Chen, Yixiang Wu, Shiyu Wang). All rights reserved.</p>
+</div>
+</body>
+
+
+</html>

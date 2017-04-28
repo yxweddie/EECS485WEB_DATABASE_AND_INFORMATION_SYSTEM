@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="page-wrap">
+        <div class="page-wrapper">
+            <div class="primary-content marRight30">
+            	<div class="mid-panel">
+                    <script>
+                        function validate() {
+                            var pass1 = document.getElementById("password1").value;
+                            var pass2 = document.getElementById("password2").value;
+                            var isValidate = true;
+                            if (pass1 != pass2) {
+                                //alert("Passwords Do not match");
+                                document.getElementById("password1").style.borderColor = "#E34234";
+                                document.getElementById("password2").style.borderColor = "#E34234";
+                                ok = false;
+                                alert("Passwords does not Match!!!");
+                            }
+                            return isValidate;
+                        }
+                    </script>
+                    <div class = "outer">
+                        <form id = "editAccount" class = "container" onsubmit= "return validate()" method=post action="#">
+                            <div class = "header_info">
+                                <h3>Edit/Delete Account</h3>
+                                <p>{{Error}}</p>
+                            </div>
+                            <div class="sep"></div>
+                            <div class="inputs">
+                                <input class = "input" type="password" id = "cpassword" name="cpassword" placeholder="Current password" required pattern="^(?=.*[A-Za-z])(?=.*\d)[a-zA-Z0-9_]{5,15}"/><br />
+                                <input class = "input" type="password" id = "password1" name="password1" placeholder="New Password" required pattern="^(?=.*[A-Za-z])(?=.*\d)[a-zA-Z0-9_]{5,15}"/><br />
+                                <input class = "input" type="password" id = "password2" name="password2" placeholder="Confirm New Password" required pattern="^(?=.*[A-Za-z])(?=.*\d)[a-zA-Z0-9_]{5,15}"/><br />
+                                <input class = "input" type="text" id = "firstname" name="firstname" placeholder = "Firstname" required pattern = "[a-zA-Z0-9_]{3,20}" /><br />
+                                <input class = "input" type="text" id = "lastname" name="lastname" placeholder = "Lastname" required pattern = "[a-zA-Z0-9_]{3,20}" /><br />
+                                <input class = "input" type="email" id = "email" name="email" placeholder = "Email"  required pattern = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"/><br />
+                            </div>
+                            <button id = "submit" HREF="javascript:document.getElementById('editAccount').submit()">Update </button>
+                        </form>
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        <form id = "deleteAccount"  class = "container" action="{{ url_for('user.delete_account') }}">
+                            <p> <span class = "important"> Do you want to delete your account? </span></p>
+                            <button id = "delete" HREF="javascript:document.getElementById('deleteAccount').submit()">Delete Account </button>
+                        </form>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

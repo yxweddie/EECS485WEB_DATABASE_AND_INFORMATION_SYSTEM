@@ -1,0 +1,149 @@
+*{margin:0; padding:0; font-family: 'Ropa Sans', sans-serif;}
+body{background:url(/static/img/pattern-1.jpg);}
+
+/*-------------------------------------------------
+GLOBALS CLASSES
+-------------------------------------------------*/
+p{font-family: 'Ropa Sans', sans-serif; color:#978e86; font-size:14px; font-weight:normal; line-height:20px;}
+a{text-decoration:none; color:#cf9359;}
+a:hover{text-decoration:none; color:#978e86;}
+ul li { list-style:none; outline:none;}
+img { border:none;}
+h1{font-family: 'Ropa Sans', sans-serif; font-size:26px; color:#282623; text-transform:uppercase; font-weight:normal;}
+
+
+/*-------------------------------------------------
+CSS TWEAKS
+-------------------------------------------------*/
+.clearing { clear:both;}
+.fltLeft { float:left;}
+.flrRight { float:right;}
+.marLeft30 { margin-left:30px !important;}
+.marLeft20 { margin-left:20px;}
+.marRight20{ margin-right:20px;}
+.marRight25{ margin-right:25px;}
+.marRight30 { margin-right:30px;}
+.marginTop { margin-top:30px;}
+.marginTop10{ margin-top:10px;}
+.marginBottom { margin-bottom:60px;}
+.padTop { padding-top:20px;}
+.padBottom { padding-bottom:30px;}
+.padBottom20 { padding-bottom:20px;}
+.center {text-align: center;}
+.wid960{ width:960px !important; }
+.height20 {height:20px;}
+.textCenter{text-align:center;}
+.welcomeMsg{font-size:90px;}
+
+
+/*-------------------------------------------------
+HEADER CLASSES
+-------------------------------------------------*/
+.header{width:960px; margin:0 auto; overflow:hidden;}
+.header-panel{width:800px; float:left; overflow:hidden; margin:30px 0 0 80px;}
+.header-panel .font-size20{font-size: 20px;}
+.header-panel p{color:#cf9359; float:left; font-size:14px; text-align:right; font-weight:normal;}
+
+.menu{width:800px; float:left; margin-top:30px;}
+.menu ul li{float:left; padding-bottom:20px; width:120px;}
+.menu .simple-menu{float:left; margin-left: 200px}
+.menu ul li a{display:block; width:120px; height:40px; line-height:40px; background:#414141; font-family: 'Source Sans Pro', sans-serif; font-size:14px; color:#ffffff; text-align:center; text-transform:uppercase;}
+.menu ul li a:hover{background:#cf9359; color:#282828;}
+.menu ul li a.active{background:#cf9359; color:#282828;}
+
+/*--------------------------------------------------
+LOG IN CLASSES
+--------------------------------------------------*/
+.right-top
+{
+    position:relative;
+    float:right;
+    top:0;
+    right:0;
+    z-index:300;
+
+}
+/*-------------------------------------------------
+PANEL CLASSES
+-------------------------------------------------*/
+.panel-wrap{width:100%; background:url(/static/img/pattern-2.jpg); overflow:hidden; margin-top:20px;}
+.panel-wrapper{width:960px; margin:0 auto; overflow:hidden; margin-top:30px; padding-bottom:50px;}
+
+.panel-wrapper .panel{width:260px; background:#f3f3ee; float:left; padding:20px; margin-top: 20px}
+.panel-wrapper .title {  padding-bottom:15px;}
+.panel-wrapper .title h1{color:#50453b; font-family: 'Source Sans Pro', sans-serif; font-weight:normal; padding-top:10px;}
+.panel-wrapper .border{border-bottom:1px solid #dadacb; }
+.panel-wrapper .content p{padding-top:15px; }
+.panel-wrapper .button-link{ margin-top:20px; background:url(/static/img/icon-more.png) no-repeat; width:16px; height:16px; padding-bottom:30px;  padding-left:20px;}
+.panel-wrapper .pic260{width: 260px; height: 260px}
+
+/*-------------------------------------------------
+TOP PANEL CLASSES
+-------------------------------------------------*/
+.page-wrap{width:100%; background:url(/static/img/pattern-3.jpg); overflow:hidden;}
+.top-content{width:930px;  background:#f3f3ee; margin:0 auto; margin-top:50px; }
+.top-content h1{padding-top:26px; padding-left:20px;}
+.top-content p{ margin-left:20px; margin-right:20px;}
+.top-content .button-link{margin-left:20px; margin-top:20px; background:url(/static/img/icon-more.png) no-repeat; width:16px; height:16px; padding-bottom:30px;  padding-left:20px;}
+
+/*-------------------------------------------------
+LAYOUT CLASSES
+-------------------------------------------------*/
+.page-wrapper{width:960px; margin:0 auto; margin-top:30px; padding-bottom:50px; overflow:hidden;}
+.primary-content{width:960px; float:left; overflow:hidden;}
+.sidebar{width:300px; float:left; overflow:hidden;}
+.mid-panel .panel{width:580px;  overflow:hidden; padding-top:30px; padding-left:30px;}
+.mid-panel .micro-pic-panel{width:180px;  overflow:hidden; float:left; padding-top:30px; padding-left:30px;}
+.mid-panel .micro-pic-panel .date{font-size: 11px;}
+.panel .title h2{color:#cf9359; font-size:22px; padding-top:20px; font-weight:normal;}
+.panel .title .edit{font-family: 'Ropa Sans', sans-serif; font-size:16px; color:#000000;}
+.panel .title .edit:hover{text-decoration:none; color:#978e86;}
+.content img{float:left;}
+.content p{padding-bottom:10px;}
+.panel .td-width40{width: 40px}
+.panel .td-width80{width: 80px}
+.panel .td-width120{width: 120px}
+.panel .td-width200{width: 200px}
+
+
+/*------------- ------------------------------------
+PRIMARY CONTENT CLASSS
+-------------------------------------------------*/
+.primary-content .toppanel{width:100%; background:url(/static/img/pattern-2.jpg); overflow:hidden;}
+.primary-content .container{width:590px; margin:0 auto;}
+.primary-content .container h1{padding-top:30px; padding-bottom:15px;}
+.primary-content .container .border-bottom{border-bottom:1px solid #9e978b;}
+.primary-content .container-wrap{width:295px; float:left; overflow:hidden; margin-top:30px; margin-bottom:30px; border-right:1px solid #9e978b;}
+.primary-content .container-wrap.borderNone{border-right:none;}
+.primary-content .container-panel{width:275px; margin-right:20px; border-bottom:1px solid #9e978b; overflow:hidden;}
+.primary-content .container-panel.borderNone{border-bottom:none;}
+.primary-content .container-panel-left{width:42px; float:left;}
+.primary-content .container-panel-right{width:213px; float:left;}
+.primary-content .container-panel-right h3{font-size:18px; color:#ffffff; font-weight:normal;}
+.primary-content .container-panel-right p{color:#e5e2d3;}
+.primary-content .mid-panel{width:100%; background:#f3f3ee; float:left;   padding-bottom:30px;}
+.primary-content .left-side{width:100px; height: 100px; float:left;}
+.primary-content .right-side{width:100px; float:right;}
+.primary-content .mid-picture{width: 600px; margin: 80px 0 0 160px;}
+.primary-content .micro-picture{width:160px; height:150px; padding:auto;}
+.primary-content .button-link{ margin-top:20px; background:url(/static/img/icon-more.png) no-repeat; width:16px; height:16px; padding-bottom:30px;  padding-left:20px;}
+.primary-content .mid-panel-content{width:580px; margin:0 auto; overflow:hidden; padding-top:30px;}
+.primary-content .title {}
+.primary-content .mid-panel-content h2{color:#cf9359; font-size:22px; padding-top:20px; font-weight:normal;}
+.primary-content .mid-panel-content p{padding-top:10px;}
+.primary-content .border{border-bottom:1px solid #dadacb; margin-top:10px;}
+.primary-content .img{width:180px; margin-top:30px; float:left;}
+
+.mid-panel .back_link {padding-top:20px; padding-left:30px; margin-bottom:30px;}
+.mid-panel .back_link_left {float:left;  padding-top: 8px;}
+.mid-panel .back_link_middle_title {float:left;  margin-left: 180px; font-size: 18px; color: #752216;}
+.mid-panel .back_link_middle_title_pic {float:left;  margin-left: 280px; font-size: 18px; color: #752216;}
+.mid-panel .back_link_middle_author {float:left;  margin-left: 30px; font-size: 12px; padding-top: 10px; color: #6e6e74;}
+.mid-panel .edit_album_right {float:right; margin-right: 50px; padding-top: 8px;}
+.welcomeColor .welcome_content{color: #B37136;}
+
+/*-------------------------------------------------
+SIDEBAR CLASSS
+-------------------------------------------------*/
+.footer{width:960px; margin:0 auto; margin-top:76px; overflow:hidden;}
+.footer p{text-align:center; color:#cf9359; padding-bottom:72px; font-size: 18px}

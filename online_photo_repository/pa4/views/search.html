@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="page-wrap">
+    <div class="panel-wrapper">
+        <!--<div class="right-top">
+            <a href="user/login?returnUrl=main.index">Sign in</a>
+            <a href="">Sign up</a>
+        </div>-->
+        <div class="primary-content textCenter">
+            <div class="title">
+                <form method="post" action="{{url_for('search.query_photos')}}">
+                      Query:
+                    <input id="query" name="query" type="text"/>
+                    <input type="submit" value="search"/>
+                </form>
+            </div>
+
+            {% if display %}
+
+                 <div class="marLeft30">
+                    <p>There are total {{count}} results related to your query</p>
+                    {% for photo in photos %}
+                    <div class="content marginTop">
+                        <form method="post" name="form{{photo[0]}}" action="{{url_for('search.query_photos')}}">
+                            <input type="hidden" name="query" value="{{photo[3]}}"/>
+                        <a href="javascript:document.form{{photo[0]}}.submit();"><img src="{{url_for('main.flickr_images', filename=photo[1])}}"
+                                                        width="200" height="200" class="marRight30"/>
+                        </a>
+                        </form>
+
+
+                    </div>
+
+                    <div class="clearing"></div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+
+.container {
+	display: table;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 26px;
+    padding: 0px 25px 25px;
+    border-radius: 5px;
+    position: static;
+}
+
+.container .header_info {
+	margin-bottom: 20px;
+	margin-top: 20px
+}
+
+.container .header_info h3 {
+	color: #cf9359;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.container .header_info p {
+	color: #8f8f8f;
+    font-size: 14px;
+    font-weight: 300;	
+}
+
+.container .sep {
+    height: 5px;
+    background: #e8e8e8;
+    margin: 0px -25px;
+}
+
+.container .inputs {
+    margin-top: 25px;
+}
+
+.container .inputs .input{
+	height: 38px;
+	border-radius: 5px;
+	border: 1px solid #b3b3b3;
+	width: 250px;
+	font-size: 1.071rem;
+	line-height: 1.25em;
+	margin-top: 10px;
+}
+
+.container #submit{
+	margin-top: 10px;
+	height: 38px;
+	border-radius: 5px;
+	border: 1px solid #b3b3b3;
+	width: 250px;
+	font-size: 1.071rem;
+	line-height: 1.25em;
+	background-color: #cf9359;
+}
+
+.container #delete{
+	margin-top: 10px;
+	height: 38px;
+	border-radius: 5px;
+	border: 1px solid #b3b3b3;
+	width: 250px;
+	font-size: 1.071rem;
+	line-height: 1.25em;
+	background-color: #cf9359;
+}
+
+.container .important{
+	font-size: 1.071rem;
+	line-height: 1.25em;
+	color: red;
+}
+

@@ -26,6 +26,6 @@ Unless you're lucky `pip install mysql-python` probably failed. Thats because yo
 Whew, fun right? Welcome to web development, sometimes setting up tools is a huge pain.
 
 ## Run the Darn Thing:
-You can simply run `python app.py` now and you'll have an app running!
+You can simply run `python runner.py` now and you'll have an app running!
 
 Once you've gotten your app working fine run `pip freeze > requirements.txt` to save your dependencies as they are. This way when your group mates pull your code they can just run `pip install -r requirements.txt` just like before!

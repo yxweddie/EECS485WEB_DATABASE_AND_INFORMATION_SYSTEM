@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="page-wrap">
+        <div class="page-wrapper">
+            <div class="primary-content marRight30">
+            	<div class="mid-panel">
+                    <div class = "outer">
+					<form id = "LogIn" class = "container" method=post action="#">
+                        <div class = "header_info">
+                            <h3>Welcome Log in:</h3>
+                            <p>{{error}}</p>
+                        </div>
+                        <div class="sep"></div>
+                        <div class="inputs">
+        				    <input class = "input" type="text" name="username" placeholder="Username" /><br />
+        				    <input class = "input" type="password" name="password" placeholder="Password" /><br />
+        				    <input class = "input" type="hidden" name="returnUrl" value="{{ returnUrl }}" />
+                        </div>
+        				<button id = "submit" HREF="javascript:document.getElementById('LogIn').submit()">Log IN</button>
+    				</form>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

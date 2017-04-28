@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session['login'] %}
+{% if not edit%}
+<div class="page-wrap">
+    <div class="page-wrapper">
+        <div class="primary-content marRight30">
+            <div class="mid-panel">
+                <div class="panel">
+
+                    <div class="title marginTop">
+                        <h1>{{pageTitle}}<a href="albums/edit" class="marLeft30 edit">[ Edit albums ]</a></h1>
+
+                        <h2>This contains all the pictures in {{pageTitle}} </h2>
+                    </div>
+                </div>
+                <div class="border"></div>
+                <div class="marLeft30">
+                    {% for album in albumsName %}
+                    <div class="content marginTop"><img src="{{ url_for('static', filename='img/umich.jpg') }}"
+                                                        width="200" height="200" class="marRight30"/>
+
+                        <h2><a href="album/{{album[0]}}">{{album[1]}}</a></h2>
+
+                        <p>This contains all the pictures in {{album[1]}} </p>
+                    </div>
+                    <div class="clearing"></div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif%}
+
+{% if edit %}
+<div class="page-wrap">
+    <div class="page-wrapper">
+        <div class="primary-content marRight30">
+            <div class="mid-panel">
+                <div class="panel">
+                    <div class="title">
+                        <a href="/v4y9q6ko6r/pa2/albums">Back to all albums</a>
+                    </div>
+                    <div class="content">
+
+                    </div>
+                    <table class="marginTop marginBottom">
+                        <thead>
+                        <td class="td-width200">Album Name</td>
+                        <td class="td-width80">Access</td>
+                        <td class="td-width80">Modify</td>
+                        <td class="td-width80">Drop</td>
+                        </thead>
+                        <tbody>
+                        {% for album in albumsName%}
+                        <tr>
+                            <td class="td-width200">{{album[1]}}</td>
+                            <td class="td-width80">{{ album[-1] }}</td>
+                            <td class="td-width80"><a href="{{ url_for('album.edit_album') }}{{ album[0] }}"
+                                                      ENCTYPE="multipart/form-data">Edit</a></td>
+                            <td class="td-width80">
+                                <form id="{{album[0]}}" method="POST" action="{{ url_for('albums.edit_albums') }}">
+                                    <input type="hidden" name="op" value="delete">
+                                    <input type="hidden" name="albumid" value="{{album[0]}}">
+
+                                    <a HREF="javascript:document.getElementById('{{album[0]}}').submit()">Delete</a>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <form id="addForm" method="POST" action="{{url_for('albums.edit_albums')}}"
+                          ENCTYPE="multipart/form-data">
+                        <input type="text" name="albumName" placeholder="New Album Name">
+                        <input type="hidden" name="op" value="add">
+
+                        <a HREF="javascript:document.getElementById('addForm').submit()">Add</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<!--- page wrap div end -->
+<!--- not login-->
+<!-- not login-->
+{% else %}
+<div class="page-wrap">
+    <div class="page-wrapper">
+        <div class="primary-content marRight30">
+            <div class="mid-panel">
+                <div class="panel">
+                    <div class="title marginTop">
+                        <h1>All Albums</h1>
+                    </div>
+                    <div class="border"></div>
+
+                    {%for album in albums%}
+                    <div  class="content marginTop">
+
+                        <img src="{{ url_for('static', filename='img/umich.jpg') }}"
+                                                        width="200" height="200" class="marRight30"/>
+
+                        <h2><a href="album/{{album[0]}}">{{album[1]}}</a></h2>
+                        <h4><i>by {{ album[4] }}</i></h4>
+
+                            <p>This contains all the pictures in {{album[1]}} </p>
+
+
+
+
+                    </div>
+                    <div class="clearing"></div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
