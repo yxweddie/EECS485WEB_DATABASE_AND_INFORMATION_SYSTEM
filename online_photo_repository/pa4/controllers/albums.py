@@ -1,3 +1,4 @@
+__author__ = 'Yixiang
 import album
 import itertools
 import main

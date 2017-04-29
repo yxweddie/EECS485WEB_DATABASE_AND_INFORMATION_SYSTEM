@@ -1,6 +1,7 @@
 # coding=utf8
 # -*- coding: utf8 -*-
 # vim: set fileencoding=utf8 :
+__author__ = 'Yixiang
 import hashlib
 import itertools
 import os

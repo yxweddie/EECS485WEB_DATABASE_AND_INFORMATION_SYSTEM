@@ -1,3 +1,6 @@
+/* 
+ Author : "Yixiang Wu"
+*/
 function remove_user_privilege(url_prefix, album_id, username){
     var data = {};
     data['album_id'] = album_id;

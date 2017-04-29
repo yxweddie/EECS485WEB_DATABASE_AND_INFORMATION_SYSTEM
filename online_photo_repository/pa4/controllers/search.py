@@ -1,3 +1,4 @@
+__author__ = 'Yixiang
 import requests
 import itertools
 
